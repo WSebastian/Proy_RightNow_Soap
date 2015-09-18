@@ -204,7 +204,7 @@ public class SampleClient
 		return newContact;
 	}
 	
-	public Integer getContact(long _id)
+	public void getContact()
 			throws RemoteException, RequestErrorFault, UnexpectedErrorFault, ServerErrorFault
 	{
 		
@@ -224,7 +224,7 @@ public class SampleClient
 		
 		IDContact.setId(7755431);
 		contact.setID(IDContact);
-		
+		System.out.println("1");
 
 		NoteList notes = new NoteList();
 		
@@ -233,11 +233,14 @@ public class SampleClient
 		
 		RNObject[] rnObjects = new RNObject[]{contact};
 		
+		System.out.println("Antes de ejecutar");
 		
 		RNObjectsResult rnObjectsResult =  _service.get(rnObjects, getProcessingOptions, clientInfoHeader);
 		
-		
-		return 1;
+		  
+		RNObject[]  rnObjects2 = rnObjectsResult.getRNObjects();
+		Contact contact2 =(Contact)rnObjects2[0];
+		System.out.println("termino: "+contact2.getName().getFirst());
 
 	}
 

@@ -17,17 +17,18 @@ public class Test
 	{
 		try
 		{
-			ContactDTO contactDTO = new ContactDTO();
-			contactDTO.setNombre("saa");
-			contactDTO.setApellido("2asd34");
-
-
 			SampleClient sampleClient = new SampleClient();
-			long id = sampleClient.createContacto(contactDTO);
-//			
-//			System.out.println("Id obtenido: "+id);
+//			ContactDTO contactDTO = new ContactDTO();
+//			contactDTO.setNombre("saa");
+//			contactDTO.setApellido("2asd34");
+//
+//
+//			SampleClient sampleClient = new SampleClient();
+//			long id = sampleClient.createContacto(contactDTO);
+////			
+////			System.out.println("Id obtenido: "+id);
 			
-	     sampleClient.getContact(1);
+	     sampleClient.getContact();
 		}
 		catch (NullPointerException | RemoteException | RequestErrorFault | UnexpectedErrorFault | ServerErrorFault e)
 		{
