@@ -17,8 +17,6 @@ public class Test
 	{
 		try
 		{
-			System.out.println("Hola llego mi commit");
-			
 			ContactDTO contactDTO = new ContactDTO();
 			contactDTO.setNombre("saa");
 			contactDTO.setApellido("2asd34");
