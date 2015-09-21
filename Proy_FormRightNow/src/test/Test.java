@@ -21,8 +21,7 @@ public class Test
 		{
 			
 			
-			getContacto();
-			
+			crearOportunity();
 			
 		}
 		catch (NullPointerException e)
@@ -36,33 +35,28 @@ public class Test
 	{
 		IServiceRightNow iService = new IServiceRightNowImpl();
 
-		iService.getContact(7755522);
+		iService.getContactByNombreApellido("Pedrito", "Camela");
 	}
 	
 	private static void crearContacto()
 	{
 		IServiceRightNow iService = new IServiceRightNowImpl();
 	
-		long id =iService.createContact("jkkj", "jk", "21323", "21213", 2, "232429", "kjjk@gmail.com");
+		Contact contact =iService.createContact("asbfdb", "fdb", "23444344", "43444344", 1, "47984559", "farnicio@gmail.com");
 		
-		System.out.println("Contacto creado con el id: "+id);
+		System.out.println("Contacto creado con el id: "+contact.getID().getId());
 	}
 	
-	private static void xxx()
+	private static void crearOportunity()
 	{
-//		RightNowClient client = new RightNowClient();
-//		
-//		ContactDTO c=new ContactDTO();
-//		c.setApellido("daniel");
-//		c.setNombre("peredo");
-//		c.setEmail("daniel@gmail.com");
-//		c.setFonoFijo("21323");
-//		c.setFonoMovil("21213");
-//		c.setTipoDocumento(2);
-//		c.setNumDocumento("232423");
-//		
-//		client.createContact(c);
+		IServiceRightNow iService = new IServiceRightNowImpl();
+		
+//		iService.createOportunity("Eliazar", "Espinozas", "34344434", "343444444", 1, "470854525", "eliazar@gmail.com");
+//		iService.createOportunity("fabricio", "lapa", "23444344", "43444344", 1, "47984559", "farnicio@gmail.com");
+		iService.createOportunity("Marconi", "Ferraso", "434989", "8953", 1, "344", "frrer@gmail.com");
+
 	}
+
 	
 	
 }

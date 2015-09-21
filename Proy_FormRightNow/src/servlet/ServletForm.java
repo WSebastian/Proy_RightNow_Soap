@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.rightnow.ws.objects.Contact;
+
 import client.RightNowClient;
 import model.ContactDTO;
 import model.VehiculoDTO;
@@ -55,14 +57,14 @@ public class ServletForm extends HttpServlet
 	{
 		IServiceRightNow iServiceRightNow = new IServiceRightNowImpl();
 		
-		long id = iServiceRightNow.createContact(request.getParameter("txtNombre"), 
+		Contact contact = iServiceRightNow.createContact(request.getParameter("txtNombre"), 
 				                       request.getParameter("txtApellidos"), 
 				                       request.getParameter("txtFonoFijo"), 
 				                       request.getParameter("txtFonoMovil"), 
 				                       Integer.parseInt(request.getParameter("cboTipoDocumento")), 
 				                       request.getParameter("txtNumeroDocumento"),
 				                       request.getParameter("txtEmail"));
-		System.out.println("Nuevo Contacto credo: "+id);
+		System.out.println("Nuevo Contacto credo: "+contact.getID().getId());
 	}
 	
 	

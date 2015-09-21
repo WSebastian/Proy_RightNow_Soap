@@ -9,5 +9,10 @@ public interface IServiceRightNow
 	Contact getContact(long _idContact);
 	
 	//Creando el contact
-	long createContact(String _nombre, String _apellido, String _numeroFono, String _numeroMovil, Integer _tipoDocumento, String _numeroDocumento, String _email);
+	Contact createContact(String _nombre, String _apellido, String _numeroFono, String _numeroMovil, Integer _tipoDocumento, String _numeroDocumento, String _email);
+	
+	void createOportunity(String _nombre, String _apellido, String _numeroFono, String _numeroMovil,
+			Integer _tipoDocumento, String _numeroDocumento, String _email);
+	
+	Contact getContactByNombreApellido(String _nombre, String _apellido);
 }
