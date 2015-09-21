@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import client.RightNowClient;
 import model.ContactDTO;
 import model.VehiculoDTO;
-import servicews.SampleClient;
+import rn.service.IServiceRightNow;
+import rn.service.impl.IServiceRightNowImpl;
 
 /**
  * Servlet implementation class ServletForm
@@ -40,17 +42,8 @@ public class ServletForm extends HttpServlet
 
 	private void servicio(HttpServletRequest request, HttpServletResponse response)
 	{
-
-			  
-		SampleClient sampleClient = new SampleClient();
-		
-		ContactDTO contactDTO = inyeccionDatosContact(request);
-		VehiculoDTO vehiculoDTO = inyeccionDatosVehiculo(request);
-		
-		System.out.println("Inyecto datos");
-		
-		System.out.println("Id Obtenido: " + sampleClient.createContacto(contactDTO));
-     		
+				
+		inyeccionDatosContact(request);
 		request.setAttribute("mensaje", "Datos enviado de manera exitosa!! :)");
 		irJSPI(request, response, "form.jsp");
 
@@ -58,38 +51,20 @@ public class ServletForm extends HttpServlet
 			
 	
 	
-	private ContactDTO inyeccionDatosContact(HttpServletRequest request)
+	private void inyeccionDatosContact(HttpServletRequest request)
 	{
-		ContactDTO contactDTO = new ContactDTO();
-		contactDTO.setNombre(request.getParameter("txtNombre"));
-		contactDTO.setApellido(request.getParameter("txtApellidos"));
-		contactDTO.setTipoDocumento(Integer.parseInt(request.getParameter("cboTipoDocumento")));
-		contactDTO.setNumDocumento(request.getParameter("txtNumeroDocumento"));
-		contactDTO.setEmail(request.getParameter("txtEmail"));
-		contactDTO.setFonoFijo(request.getParameter("txtFonoFijo"));
-		contactDTO.setFonoMovil(request.getParameter("txtFonoMovil"));
+		IServiceRightNow iServiceRightNow = new IServiceRightNowImpl();
 		
-		
-		System.out.println("------------ Datos inyectado en el contacto ---------------");
-		System.out.println("Nombre: "+contactDTO.getNombre());
-		System.out.println("Apellido: "+contactDTO.getApellido());
-		System.out.println("TipoDocumento: "+contactDTO.getTipoDocumento());
-		System.out.println("Num Documento: "+contactDTO.getNumDocumento());
-		System.out.println("Email: "+contactDTO.getEmail());
-		System.out.println("Fono fijo: "+contactDTO.getFonoFijo());
-		System.out.println("Fono Movil: "+contactDTO.getFonoMovil());
-	
-		return contactDTO;
+		long id = iServiceRightNow.createContact(request.getParameter("txtNombre"), 
+				                       request.getParameter("txtApellidos"), 
+				                       request.getParameter("txtFonoFijo"), 
+				                       request.getParameter("txtFonoMovil"), 
+				                       Integer.parseInt(request.getParameter("cboTipoDocumento")), 
+				                       request.getParameter("txtNumeroDocumento"),
+				                       request.getParameter("txtEmail"));
+		System.out.println("Nuevo Contacto credo: "+id);
 	}
 	
-	private VehiculoDTO inyeccionDatosVehiculo(HttpServletRequest request)
-	{
-		VehiculoDTO vehiculoDTO = new VehiculoDTO(request.getParameter("txtPlaca"));
-		System.out.println("------------ Datos inyectado en el Vehiculo ---------------");
-		System.out.println("Placa: "+vehiculoDTO.getNumPlaca());
-		
-		return vehiculoDTO;
-	}
 	
 	
 	private void irJSPI(HttpServletRequest _request, HttpServletResponse _response, String _jsp)
