@@ -17,7 +17,7 @@ public class TestGetTabla
 	private void getAccounts()
 	{
 		
-		iServiceRightNow.getAcccounts("Juan Perez");
+		iServiceRightNow.getAnswer("Juan Perez");
 		
 		
 	}

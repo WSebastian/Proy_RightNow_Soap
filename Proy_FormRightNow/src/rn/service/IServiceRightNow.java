@@ -1,5 +1,7 @@
 package rn.service;
 
+import com.rightnow.ws.objects.Account;
+import com.rightnow.ws.objects.Answer;
 import com.rightnow.ws.objects.Contact;
 
 public interface IServiceRightNow
@@ -16,5 +18,5 @@ public interface IServiceRightNow
 	
 	Contact getContactByNombreApellido(String _nombre, String _apellido);
 
-	void getAcccounts(String string);
+	Answer getAnswer(String string);
 }

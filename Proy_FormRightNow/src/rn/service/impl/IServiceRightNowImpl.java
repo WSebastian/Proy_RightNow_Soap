@@ -7,6 +7,7 @@ import com.rightnow.ws.base.RNObject;
 import com.rightnow.ws.messages.QueryResultData;
 import com.rightnow.ws.messages.RNObjectsResult;
 import com.rightnow.ws.objects.Account;
+import com.rightnow.ws.objects.Answer;
 import com.rightnow.ws.objects.Contact;
 import com.rightnow.ws.objects.NoteList;
 import com.rightnow.ws.objects.Opportunity;
@@ -191,48 +192,57 @@ public class IServiceRightNowImpl extends RightNowClient implements IServiceRigh
 
 
 	@Override
-	public void getAcccounts(String _fullName)
+	public Answer getAnswer(String _fullName)
 	{
-		Contact contact = null;
-		Account account = null;
-
-
+		Answer answer = new Answer();
 		try
 		{
-//			account = new Account();
-//			
-//			
-//			contact = new Contact();
-//			ID IDContact = new ID();
-//
-//			IDContact.setId(_idContact);
-//			contact.setID(IDContact);
-//
-//			NoteList notes = new NoteList();
-//
-//			contact.setNotes(notes);
-//
-//			RNObject[] rnObjects = new RNObject[] { contact };
-//
-//			System.out.println("Antes de ejecutar la busqueda");
-//
-//			RNObjectsResult rnObjectsResult = _service.get(rnObjects, getProcessingOptions(), clientInfoHeader(BASIC_GET));
-//
-//			System.out.println("Despues de ejecutar");
-//			RNObject[] rnObjects2 = rnObjectsResult.getRNObjects();
-//
-//			contact = (Contact) rnObjects2[0];
-//
-//			imprimirDatosContacto(contact);
-		}
-		catch (Exception e)
+			answer = new Answer();
+
+		    RNObject[] objectTemplates97 = new RNObject[]{answer};
+		    
+		    System.out.println("Se prepara para buscar");
+			
+			String sql = "SELECT Answer FROM Answer Limit 1";
+			
+			QueryResultData[] objectsResult = _service.queryObjects(sql, objectTemplates97, 1000, clientInfoHeader(BASIC_GET));
+			if(objectsResult[0].getRNObjectsResult().getRNObjects() != null)
+			{
+				System.out.println("Entro y hay dato");
+				//Solo quiero 1 resultado
+				RNObjectsResult  object=objectsResult[0].getRNObjectsResult();
+				
+				//Obtengo el arreglo de objetos
+				RNObject[] objects = object.getRNObjects();
+				//Casteo a objeto la primera posicion
+				answer = (Answer)objects[0];
+				
+				System.out.println("Encontro una respuesta: "+answer.getID());
+			}	
+			System.out.println("No Hay dato");
+
+		} 
+		catch (RemoteException e)
 		{
-			System.out.println("Error en getContact(): " + e);
 			e.printStackTrace();
 		}
-
+		catch (RequestErrorFault e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (UnexpectedErrorFault e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (ServerErrorFault e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-
+		return answer;
 	}
 
 }
