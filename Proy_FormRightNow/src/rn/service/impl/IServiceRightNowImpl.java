@@ -6,6 +6,7 @@ import com.rightnow.ws.base.ID;
 import com.rightnow.ws.base.RNObject;
 import com.rightnow.ws.messages.QueryResultData;
 import com.rightnow.ws.messages.RNObjectsResult;
+import com.rightnow.ws.objects.Account;
 import com.rightnow.ws.objects.Contact;
 import com.rightnow.ws.objects.NoteList;
 import com.rightnow.ws.objects.Opportunity;
@@ -84,6 +85,7 @@ public class IServiceRightNowImpl extends RightNowClient implements IServiceRigh
 			// results
 			RNObject[] rnObjects = createResults.getRNObjects();
 			newContact = (Contact) rnObjects[0];
+		    System.out.println("Creo contacto");
 
 		}
 		catch (RemoteException e)
@@ -102,7 +104,6 @@ public class IServiceRightNowImpl extends RightNowClient implements IServiceRigh
 		{
 			e.printStackTrace();
 		}
-	
 		return newContact;
 	}
 
@@ -186,6 +187,52 @@ public class IServiceRightNowImpl extends RightNowClient implements IServiceRigh
 		}
 		
 		return contact;
+	}
+
+
+	@Override
+	public void getAcccounts(String _fullName)
+	{
+		Contact contact = null;
+		Account account = null;
+
+
+		try
+		{
+//			account = new Account();
+//			
+//			
+//			contact = new Contact();
+//			ID IDContact = new ID();
+//
+//			IDContact.setId(_idContact);
+//			contact.setID(IDContact);
+//
+//			NoteList notes = new NoteList();
+//
+//			contact.setNotes(notes);
+//
+//			RNObject[] rnObjects = new RNObject[] { contact };
+//
+//			System.out.println("Antes de ejecutar la busqueda");
+//
+//			RNObjectsResult rnObjectsResult = _service.get(rnObjects, getProcessingOptions(), clientInfoHeader(BASIC_GET));
+//
+//			System.out.println("Despues de ejecutar");
+//			RNObject[] rnObjects2 = rnObjectsResult.getRNObjects();
+//
+//			contact = (Contact) rnObjects2[0];
+//
+//			imprimirDatosContacto(contact);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error en getContact(): " + e);
+			e.printStackTrace();
+		}
+
+		
+
 	}
 
 }

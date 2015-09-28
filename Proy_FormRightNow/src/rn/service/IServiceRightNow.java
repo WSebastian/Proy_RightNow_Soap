@@ -15,4 +15,6 @@ public interface IServiceRightNow
 			Integer _tipoDocumento, String _numeroDocumento, String _email);
 	
 	Contact getContactByNombreApellido(String _nombre, String _apellido);
+
+	void getAcccounts(String string);
 }

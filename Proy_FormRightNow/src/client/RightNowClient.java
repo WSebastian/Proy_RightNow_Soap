@@ -249,29 +249,42 @@ public class RightNowClient
 		// set GenericObject to contact's customField attribute
 		newContact.setCustomFields(genericObj);
 		
+	
 		
-		GenericField customField2 = new GenericField();
-		customField2.setName("Auto");
+//		
+//		GenericField customField2 = new GenericField();
+//		customField2.setName("Auto");
+//		
+//		DataValue dataValue2 = new DataValue();
+//		dataValue2.setStringValue("C6K558");
+//		
+//		customField2.setDataValue(dataValue2);
+//		
+//		
+//		
+//		
+//		GenericField genericField3 = new GenericField();
+//		genericField3.setName("pacifico");
+//
+//		DataValue dataValue3 = new DataValue();
+//		GenericObject genericObject = new GenericObject();
+//		genericObject.addGenericFields(customField2);
+//		
+//		dataValue3.setObjectValue(genericObject);
+//		genericField3.setDataValue(dataValue3);
+//		
+//		GenericObject genericObject2 = new GenericObject();
+//		genericObject2.addGenericFields(genericField3);
+//		
+//		newContact.setCustomFields(genericObject2);
+//
+//		
+//		
 		
-		DataValue dataValue2 = new DataValue();
-		dataValue2.setStringValue("C6K555");
 		
-		customField2.setDataValue(dataValue2);
 		
-		GenericField genericField3 = new GenericField();
-		genericField3.setName("Pacifico");
-
-		DataValue dataValue3 = new DataValue();
-		GenericObject genericObject = new GenericObject();
-		genericObject.addGenericFields(customField2);
-		dataValue3.setObjectValue(genericObject);
-		genericField3.setDataValue(dataValue3);
 		
-		GenericObject genericObject2 = new GenericObject();
-		genericObject2.addGenericFields(genericField3);
 		
-		newContact.setCustomFields(genericObject2);
-
 		EmailList emailList = new EmailList();
 		Email[] emailArray = new Email[1];
 		emailArray[0] = new Email();
