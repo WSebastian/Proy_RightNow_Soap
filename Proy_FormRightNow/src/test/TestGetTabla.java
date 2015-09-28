@@ -11,15 +11,22 @@ public class TestGetTabla
 	public static void main(String[] args)
 	{
 		
-		new TestGetTabla().getAccounts();
+		new TestGetTabla().getAnswer();
 	}
 
-	private void getAccounts()
+	private void getFileAttachment()
 	{
-		
-		iServiceRightNow.getAnswer("Juan Perez");
-		
-		
+		iServiceRightNow.getFileAttachment();
+	}
+
+	private void getChannelType()
+	{
+		iServiceRightNow.getChannelType();
+	}
+
+	private void getAnswer()
+	{
+		iServiceRightNow.getAnswer();
 	}
 
 }

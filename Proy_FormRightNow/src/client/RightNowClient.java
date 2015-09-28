@@ -16,6 +16,8 @@ import org.apache.ws.security.WSConstants;
 import com.rightnow.ws.base.ActionEnum;
 import com.rightnow.ws.base.ID;
 import com.rightnow.ws.base.NamedID;
+import com.rightnow.ws.base.NamedIDHierarchy;
+import com.rightnow.ws.base.NamedIDHierarchyList;
 import com.rightnow.ws.base.RNObject;
 import com.rightnow.ws.generic.DataValue;
 import com.rightnow.ws.generic.GenericField;
@@ -24,6 +26,8 @@ import com.rightnow.ws.messages.ClientInfoHeader;
 import com.rightnow.ws.messages.CreateProcessingOptions;
 import com.rightnow.ws.messages.GetProcessingOptions;
 import com.rightnow.ws.messages.RNObjectsResult;
+import com.rightnow.ws.objects.Answer;
+import com.rightnow.ws.objects.ChannelType;
 import com.rightnow.ws.objects.Contact;
 import com.rightnow.ws.objects.Email;
 import com.rightnow.ws.objects.EmailList;
@@ -631,6 +635,31 @@ public class RightNowClient
 		return securityHeader;
 
 	}
+	
+	protected void imprimirDatosAnswer(Answer answer)
+	{
+		System.out.println(":::::::: Answer recibido para la impresion");
+		
+	
+			System.out.println("ID: "+answer.getID().getId());	
+			System.out.println("Comment: "+answer.getComment());
+			System.out.println("Summary : "+answer.getSummary());
+			System.out.println("Update  : "+answer.getUpdatedTime());
+			
+
+			
+			System.out.println("getAccessLevels( --> Acces_ID):   "+answer.getAccessLevels());
+			
+			System.out.println("Type.id: "+answer.getAnswerType().getID().getId());
+			System.out.println("Type: "+answer.getAnswerType().getName());
+			
+			System.out.println("getFileAttachments(Contiene Products y Categories):  "+answer.getFileAttachments());
+
+		
+			
+			
+		
+	}
 
 	protected void imprimirDatosContacto(Contact _contact)
 	{
@@ -691,7 +720,16 @@ public class RightNowClient
 
 			}
 		}
+		
+		System.out.println("File Attachement ::::"+_contact.getFileAttachments().getFileAttachmentList()[0].getName());
 
+	}
+
+	protected void imprimirDatosChannelType(ChannelType channelType)
+	{
+		System.out.println("::::::::: Datos de ChannelType :::::::::::::");
+		System.out.println("ID: "+channelType.getID().getId());
+		System.out.println("Name: "+channelType.getName());
 	}
 
 }

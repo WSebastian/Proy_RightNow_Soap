@@ -20,8 +20,8 @@ public class Test
 		try
 		{
 			
+			getContacto();
 			
-			crearOportunity();
 			
 		}
 		catch (NullPointerException e)
@@ -35,7 +35,7 @@ public class Test
 	{
 		IServiceRightNow iService = new IServiceRightNowImpl();
 
-		iService.getContactByNombreApellido("Pedrito", "Camela");
+		iService.getContactByNombreApellido("PEDRO AUGUSTO", "GALARZA");
 	}
 	
 	private static void crearContacto()
