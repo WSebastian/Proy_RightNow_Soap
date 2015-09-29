@@ -28,5 +28,7 @@ public interface IServiceRightNow
 	
 	FileAttachment getFileAttachment();
 	
+	AnswerNotification getAnswerNotification();
+	
 	
 }

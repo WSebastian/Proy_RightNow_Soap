@@ -11,7 +11,7 @@ public class TestGetTabla
 	public static void main(String[] args)
 	{
 		
-		new TestGetTabla().getAnswer();
+		new TestGetTabla().getAnswerNotification();
 	}
 
 	private void getFileAttachment()
@@ -27,6 +27,11 @@ public class TestGetTabla
 	private void getAnswer()
 	{
 		iServiceRightNow.getAnswer();
+	}
+	
+	private void getAnswerNotification()
+	{
+		iServiceRightNow.getAnswerNotification();
 	}
 
 }

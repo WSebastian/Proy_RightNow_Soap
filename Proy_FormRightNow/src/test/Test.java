@@ -1,15 +1,9 @@
 package test;
 
 
-import java.rmi.RemoteException;
 
 import com.rightnow.ws.objects.Contact;
-import com.rightnow.ws.wsdl.RequestErrorFault;
-import com.rightnow.ws.wsdl.ServerErrorFault;
-import com.rightnow.ws.wsdl.UnexpectedErrorFault;
 
-import client.RightNowClient;
-import model.ContactDTO;
 import rn.service.IServiceRightNow;
 import rn.service.impl.IServiceRightNowImpl;
 
@@ -20,7 +14,7 @@ public class Test
 		try
 		{
 			
-			getContacto();
+			getContacto();;
 			
 			
 		}
@@ -35,7 +29,8 @@ public class Test
 	{
 		IServiceRightNow iService = new IServiceRightNowImpl();
 
-		iService.getContactByNombreApellido("PEDRO AUGUSTO", "GALARZA");
+//		iService.getContactByNombreApellido("PEDRO AUGUSTO", "GALARZA");
+		iService.getContactByEmail("maduchihas@gmail.com");
 	}
 	
 	private static void crearContacto()

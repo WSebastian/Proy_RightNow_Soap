@@ -653,7 +653,7 @@ public class RightNowClient
 			System.out.println("Type.id: "+answer.getAnswerType().getID().getId());
 			System.out.println("Type: "+answer.getAnswerType().getName());
 			
-			System.out.println("getFileAttachments(Contiene Products y Categories):  "+answer.getFileAttachments());
+//			System.out.println("getFileAttachments(Contiene Products y Categories):  "+answer.getProducts().getNamedIDHierarchyList());
 
 		
 			
@@ -721,7 +721,7 @@ public class RightNowClient
 			}
 		}
 		
-		System.out.println("File Attachement ::::"+_contact.getFileAttachments().getFileAttachmentList()[0].getName());
+//		System.out.println("File Attachement ::::"+_contact.getFileAttachments().getFileAttachmentList()[0].getName());
 
 	}
 
