@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.rightnow.ws.objects.Contact;
 
 import client.RightNowClient;
+import dao.ContactDAO;
 import model.ContactDTO;
 import model.VehiculoDTO;
+import rn.service.ContactDAOImpl;
 import rn.service.IServiceRightNow;
 import rn.service.impl.IServiceRightNowImpl;
 
@@ -55,9 +57,9 @@ public class ServletForm extends HttpServlet
 	
 	private void inyeccionDatosContact(HttpServletRequest request)
 	{
-		IServiceRightNow iServiceRightNow = new IServiceRightNowImpl();
+		ContactDAO contactDAO = new ContactDAOImpl();
 		
-		Contact contact = iServiceRightNow.createContact(request.getParameter("txtNombre"), 
+		Contact contact = contactDAO.createContact(request.getParameter("txtNombre"), 
 				                       request.getParameter("txtApellidos"), 
 				                       request.getParameter("txtFonoFijo"), 
 				                       request.getParameter("txtFonoMovil"), 

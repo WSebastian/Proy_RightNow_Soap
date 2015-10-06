@@ -51,7 +51,7 @@ public class RightNowClient
 {
 
 	protected RightNowSyncService _service;
-	protected final static String BASIC_GET = "Basic Get", AXIS2_GETTING_STARTED = "Axis2 Getting Started";
+	protected final static String BASIC_GET = "Basic Get", AXIS2_GETTING_STARTED = "Axis2 Getting Started", RUNNING_A_CSV_QUERY ="Running a CSV QUERY";
 
 	// Contructor
 	public RightNowClient()
@@ -641,17 +641,15 @@ public class RightNowClient
 		System.out.println(":::::::: Answer recibido para la impresion");
 		
 	
-			System.out.println("ID: "+answer.getID().getId());	
-			System.out.println("Comment: "+answer.getComment());
-			System.out.println("Summary : "+answer.getSummary());
-			System.out.println("Update  : "+answer.getUpdatedTime());
+			System.out.println("answers ::::: ID: "+answer.getID().getId());	
+			System.out.println("answers ::::: Comment: "+answer.getComment());
+			System.out.println("answers ::::: Summary : "+answer.getSummary());
+			System.out.println("answers ::::: Update  : "+answer.getUpdatedTime());
+					
+			System.out.println("answers ::::: Type.id: "+answer.getAnswerType().getID().getId());
+			System.out.println("answers ::::: Type: "+answer.getAnswerType().getName());
 			
-
 			
-			System.out.println("getAccessLevels( --> Acces_ID):   "+answer.getAccessLevels());
-			
-			System.out.println("Type.id: "+answer.getAnswerType().getID().getId());
-			System.out.println("Type: "+answer.getAnswerType().getName());
 			
 //			System.out.println("getFileAttachments(Contiene Products y Categories):  "+answer.getProducts().getNamedIDHierarchyList());
 
