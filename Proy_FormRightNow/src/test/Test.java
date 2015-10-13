@@ -4,7 +4,7 @@ package test;
 
 import com.rightnow.ws.objects.Contact;
 
-import rn.service.IServiceRightNow;
+import dao.impl.IServiceRightNow;
 import rn.service.impl.IServiceRightNowImpl;
 
 public class Test

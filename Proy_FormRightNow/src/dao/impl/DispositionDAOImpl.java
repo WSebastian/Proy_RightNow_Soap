@@ -1,4 +1,4 @@
-package rn.service;
+package dao.impl;
 
 import com.rightnow.ws.messages.CSVRow;
 import com.rightnow.ws.messages.QueryCSVResponseMsg;

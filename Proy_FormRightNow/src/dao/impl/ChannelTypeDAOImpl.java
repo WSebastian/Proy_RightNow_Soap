@@ -1,7 +1,16 @@
-package rn.service;
+package dao.impl;
 
+import java.rmi.RemoteException;
+
+import com.rightnow.ws.base.RNObject;
 import com.rightnow.ws.messages.CSVRow;
 import com.rightnow.ws.messages.QueryCSVResponseMsg;
+import com.rightnow.ws.messages.QueryResultData;
+import com.rightnow.ws.messages.RNObjectsResult;
+import com.rightnow.ws.objects.ChannelType;
+import com.rightnow.ws.wsdl.RequestErrorFault;
+import com.rightnow.ws.wsdl.ServerErrorFault;
+import com.rightnow.ws.wsdl.UnexpectedErrorFault;
 
 import client.RightNowClient;
 import dao.ChannelTypeDAO;
@@ -44,4 +53,7 @@ public class ChannelTypeDAOImpl extends RightNowClient implements ChannelTypeDAO
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
 }

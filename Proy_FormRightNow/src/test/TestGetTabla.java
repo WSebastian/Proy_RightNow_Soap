@@ -3,16 +3,20 @@ package test;
 import dao.AnswerDAO;
 import dao.ChannelTypeDAO;
 import dao.DispositionDAO;
+import dao.FileAttachmentDAO;
 import dao.IncidentsDAO;
+import dao.SLAInstanceDAO;
 import dao.ServiceCategoriesDAO;
 import dao.ServiceProductDAO;
-import rn.service.AnswerDAOImpl;
-import rn.service.ChannelTypeDAOImpl;
-import rn.service.DispositionDAOImpl;
-import rn.service.IServiceRightNow;
-import rn.service.IncidentsDAOImpl;
-import rn.service.ServiceCategoriesDAOImpl;
-import rn.service.ServiceProductDAOImpl;
+import dao.impl.AnswerDAOImpl;
+import dao.impl.ChannelTypeDAOImpl;
+import dao.impl.DispositionDAOImpl;
+import dao.impl.FileAttachmentDAOImpl;
+import dao.impl.IServiceRightNow;
+import dao.impl.IncidentsDAOImpl;
+import dao.impl.SLInstanceDAOImpl;
+import dao.impl.ServiceCategoriesDAOImpl;
+import dao.impl.ServiceProductDAOImpl;
 import rn.service.impl.IServiceRightNowImpl;
 
 public class TestGetTabla
@@ -33,33 +37,27 @@ public class TestGetTabla
 	
 	static ServiceProductDAO serviceProductDAO = new ServiceProductDAOImpl();
 	
+	static SLAInstanceDAO slaInstanceDAO = new SLInstanceDAOImpl();
+	
+	static FileAttachmentDAO fileAttachmentDAO = new FileAttachmentDAOImpl();
 	
 	public static void main(String[] args)
 	{
-		incidentsDAO.getIncidentContact();
+		incidentsDAO.getIncidentContact(); 
 	}
 	
 	
 	
-	private void getFileAttachment()
-	{
-	}
+	
 
-	private void getChannelType()
-	{
-		iServiceRightNow.getChannelType();
-	}
+
 
 	private void getAnswer()
 	{
 		answerDAO.map_cat_hierarchy();
 	}
 	
-	private void getAnswerNotification()
-	{
-		iServiceRightNow.getAnswerNotification();
-	}
-	
+
 
 	
 	

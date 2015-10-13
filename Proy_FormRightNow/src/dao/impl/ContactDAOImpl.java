@@ -1,4 +1,4 @@
-package rn.service;
+package dao.impl;
 
 import java.rmi.RemoteException;
 

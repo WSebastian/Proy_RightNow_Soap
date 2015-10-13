@@ -11,10 +11,10 @@ import com.rightnow.ws.objects.Contact;
 
 import client.RightNowClient;
 import dao.ContactDAO;
+import dao.impl.ContactDAOImpl;
+import dao.impl.IServiceRightNow;
 import model.ContactDTO;
 import model.VehiculoDTO;
-import rn.service.ContactDAOImpl;
-import rn.service.IServiceRightNow;
 import rn.service.impl.IServiceRightNowImpl;
 
 /**

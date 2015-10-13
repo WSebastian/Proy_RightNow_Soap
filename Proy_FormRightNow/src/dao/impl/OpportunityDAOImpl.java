@@ -1,4 +1,4 @@
-package rn.service;
+package dao.impl;
 
 import com.rightnow.ws.objects.Contact;
 import com.rightnow.ws.objects.Opportunity;
