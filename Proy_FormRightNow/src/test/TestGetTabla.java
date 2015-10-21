@@ -1,11 +1,14 @@
 package test;
 
 
+import com.rightnow.ws.objects.Mailbox;
+
 import dao.AnswerDAO;
 import dao.ChannelTypeDAO;
 import dao.DispositionDAO;
 import dao.FileAttachmentDAO;
 import dao.IncidentsDAO;
+import dao.MailBoxDAO;
 import dao.PacificoDAO;
 import dao.SLAInstanceDAO;
 import dao.ServiceCategoriesDAO;
@@ -16,6 +19,7 @@ import dao.impl.DispositionDAOImpl;
 import dao.impl.FileAttachmentDAOImpl;
 import dao.impl.IServiceRightNow;
 import dao.impl.IncidentsDAOImpl;
+import dao.impl.MailBoxDAOImpl;
 import dao.impl.PacificoDAOImpl;
 import dao.impl.SLInstanceDAOImpl;
 import dao.impl.ServiceCategoriesDAOImpl;
@@ -44,10 +48,13 @@ public class TestGetTabla
 	static FileAttachmentDAO fileAttachmentDAO = new FileAttachmentDAOImpl();
 	
 	static PacificoDAO pacificoDAO = new PacificoDAOImpl();
+	
+	static MailBoxDAO mailBoxDAO = new MailBoxDAOImpl();
 
 	
 	public static void main(String[] args)
 	{
+		
 		incidentsDAO.getInc_bounced_msgs();
 	}
 	

@@ -277,17 +277,17 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 		try
 		{
 
-			String sql2 = "    SELECT                                                  "
-					+ "               I.PrimaryContact.Contact.ID,                       "  
-					+ "               I.Mailbox.ID,"
-					+ "               I.CreatedTime                                      "
-					+ "        FROM Contact C INNER JOIN C.PrimaryContactIncidents I  LIMIT 10";
+			String sql = "    SELECT                                                    "
+					+ "               I.PrimaryContact.Contact.ID,                       "
+					+ "               I.Mailbox.Name,                                      "
+					+ "               I.CreatedTime,                                        "
+					+ "               I.Threads.ThreadList.ID                                "
+					+ "        FROM Contact C INNER JOIN C.PrimaryContactIncidents I  LIMIT 1000";
 
-			String sql3 = "SELECT count(*) FROM Incident";
+			// String sql = "SELECT " + " Incident.LookupName " + " FROM
+			// Incident LIMIT 12 OFFSET 2";
 
-			String sql = "SELECT " + "       Incident.LookupName " + "   FROM Incident LIMIT 12 OFFSET 2";
-
-			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql2, 10000, ",", false, false,
+			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql, 10000, ",", false, false,
 					clientInfoHeader(RUNNING_A_CSV_QUERY));
 
 			CSVRow csvRow = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows();
@@ -298,10 +298,17 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 						.getRow()[i].split(",");
 
 				System.out.println("Incident_PrimaryContact.Contact.ID :: {" + arrayStrings[0] + "}");
-				// System.out.println("Incident_Mailbox.ID :: {" +
-				// arrayStrings[1] + "}");
-				// System.out.println("Incident_CreatedTime :: {" +
-				// arrayStrings[2] + "}");
+				System.out.println("Incident_Mailbox.ID :: {" + arrayStrings[1] + "}");
+				System.out.println("Incident_CreatedTime :: {" + arrayStrings[2] + "}");
+				
+				if (arrayStrings.length == 3)
+				{
+					System.out.println("Incident_Threads     :: { }");
+				} 
+				else
+				{
+					System.out.println("Incident_Threads     :: {" + arrayStrings[3] + "}");
+				}
 				System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 
 			}
