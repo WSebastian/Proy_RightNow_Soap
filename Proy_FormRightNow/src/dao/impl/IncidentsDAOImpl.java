@@ -277,16 +277,17 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 		try
 		{
 
-			String sql2 = "    SELECT                                                     "
-					+ "             I.PrimaryContact.Contact.ID,                       " + "             I.Mailbox.ID,"
-					+ "             I.CreatedTime                                      "
+			String sql2 = "    SELECT                                                  "
+					+ "               I.PrimaryContact.Contact.ID,                       "  
+					+ "               I.Mailbox.ID,"
+					+ "               I.CreatedTime                                      "
 					+ "        FROM Contact C INNER JOIN C.PrimaryContactIncidents I  LIMIT 10";
 
 			String sql3 = "SELECT count(*) FROM Incident";
 
 			String sql = "SELECT " + "       Incident.LookupName " + "   FROM Incident LIMIT 12 OFFSET 2";
 
-			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql, 10000, ",", false, false,
+			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql2, 10000, ",", false, false,
 					clientInfoHeader(RUNNING_A_CSV_QUERY));
 
 			CSVRow csvRow = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows();

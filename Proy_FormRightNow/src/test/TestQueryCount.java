@@ -13,22 +13,18 @@ public class TestQueryCount<T>
 
 	public void getAllRow()
 	{
-		String sql = "SELECT * FROM Contact";
+		String sql = "SELECT * FROM Opportunity";
 
 		List<String> incidents = new GenericClass().getListString(sql);
 		
 		System.out.println("::::::: Tamaño de la lista :::::::: "+incidents.size());
 		
-		for (int i = 0; i < incidents.size(); i++)
-		{
-			
-			System.out.println(":::::::: "+incidents.get(i));
-			
-			
-			
-			
-			
-		}
+//		for (int i = 0; i < incidents.size(); i++)
+//		{
+//			
+//			System.out.println(":::::::: "+incidents.get(i));
+//
+//		}
 
 	}
 

@@ -3,7 +3,6 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.bcel.generic.NEW;
 
 import com.rightnow.ws.messages.CSVRow;
 import com.rightnow.ws.messages.QueryCSVResponseMsg;
@@ -40,7 +39,7 @@ public class GenericClass extends RightNowClient
 		{
 			Integer rowCounts = getRowCounts(sql.split("FROM")[1]);
 
-			System.out.println("Tamaño de registros devuelto: " + rowCounts);
+			System.out.println("Tamaño de registros contados devuelto: " + rowCounts);
 
 			CSVRow csvRow;
 			csvRows = new ArrayList<CSVRow>();
@@ -57,7 +56,6 @@ public class GenericClass extends RightNowClient
 				System.out.println("Divisor: " + divisor);
 				System.out.println("cociente: " + cociente);
 				System.out.println("residuo: " + residuo);
-				System.out.println("count: " + count);
 				String sqlGenerate = null;
 
 				if (residuo != 0)
@@ -71,7 +69,7 @@ public class GenericClass extends RightNowClient
 
 					if (count == 1)
 					{
-						sqlGenerate = sql + " LIMIT 10000 OFFSET " + (count);
+						sqlGenerate = sql + " LIMIT 10000 ";
 					} else
 					{
 						sqlGenerate = sql + " LIMIT 10000 OFFSET " + (count * 10000);
