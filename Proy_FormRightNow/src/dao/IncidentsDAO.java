@@ -17,4 +17,11 @@ public interface IncidentsDAO
 	void getIncidentsDispositions();
 	void Incidents_disp_id_byDispositionName();
 	void getIncidentContact();
+	
+	
+	void getInc_performance();
+	
+	void getInc_bounced_msgs();
+	
+	void getIncidentsField();
 }

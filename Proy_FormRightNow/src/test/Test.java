@@ -9,6 +9,7 @@ import rn.service.impl.IServiceRightNowImpl;
 
 public class Test
 {
+
 	public static void main(String[] args)
 	{
 		try

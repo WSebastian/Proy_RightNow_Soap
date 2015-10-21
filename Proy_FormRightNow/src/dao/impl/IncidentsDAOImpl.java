@@ -2,6 +2,8 @@ package dao.impl;
 
 import java.rmi.RemoteException;
 
+import org.opensaml.ESAPISecurityConfig;
+
 import com.rightnow.ws.base.NamedIDWithParent;
 import com.rightnow.ws.messages.CSVRow;
 import com.rightnow.ws.messages.QueryCSVResponseMsg;
@@ -55,10 +57,8 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 			 * General
 			 */
 
-			String sql2 = "Select                                " 
-			        + "             ID,                          "
-					+ "             Incident.Category.ID,        " 
-			        + "             Incident.Category.Name" 
+			String sql2 = "Select                                " + "             ID,                          "
+					+ "             Incident.Category.ID,        " + "             Incident.Category.Name"
 					+ "    From                                  "
 					+ "    Incident Where Incident.Category.Name='Carta de garantía'";
 
@@ -118,16 +118,12 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 	{
 		try
 		{
-			
 
-			String sql2 = "Select                             " 
-					+ "             ID,                       "
-					+ "             Incident.Product.ID,      "
-					+ "             Incident.Product.Name     " 
-					+ "    From                               "
-					+ "    Incident Where Incident.Product.Name='SOAT'";
+			String sql = "Select                             " + "             ID,                       "
+					+ "             Incident.Product.ID,      " + "             Incident.Product.Name     "
+					+ "    From                               " + "    Incident Where Incident.Product.Name='SOAT'";
 
-			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql2, 10000, ",", false, false,
+			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql, 10000, ",", false, false,
 					clientInfoHeader(RUNNING_A_CSV_QUERY));
 
 			String[] arrayStrings = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows()
@@ -136,8 +132,7 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 			System.out.println("Incident_id :: {" + arrayStrings[0] + "}");
 			System.out.println("Incident.Product.ID :: {" + arrayStrings[1] + "}");
 			System.out.println("Incident.Product.Name :: {" + arrayStrings[2] + "}");
-		} 
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -160,8 +155,7 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 						+ next.getName() + "}");
 
 			}
-		} 
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -170,14 +164,12 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 	@Override
 	public void Incidents_disp_id_byDispositionName()
 	{
+
 		try
 		{
-			
 
-			String sql2 = "Select                             " 
-					+ "             ID,                       "
-					+ "             Incident.Disposition.ID,      "
-					+ "             Incident.Disposition.Name     " 
+			String sql2 = "Select                             " + "             ID,                       "
+					+ "             Incident.Disposition.ID,      " + "             Incident.Disposition.Name     "
 					+ "    From                               "
 					+ "    Incident Where Incident.Disposition.Name='CONSULTA'";
 
@@ -190,44 +182,39 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 			System.out.println("Incident_id :: {" + arrayStrings[0] + "}");
 			System.out.println("Incident.Disposition.ID :: {" + arrayStrings[1] + "}");
 			System.out.println("Incident.Disposition.Name :: {" + arrayStrings[2] + "}");
-		} 
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+
 	@Override
 	public void getIncidentContact()
-	{		
+	{
 		try
 		{
-			String query = "SELECT   ID,"
-					+ "             PrimaryContact.Contact.ID,"
-					+ "             PrimaryContact.Contact.Name,"
-					+ "             StatusWithType.StatusType.Name,"
-					+ "             StatusWithType.StatusType.ID"
-					+ "     FROM Incident LIMIT 1000";
-			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(query, 10000, ",", false, false, clientInfoHeader(RUNNING_A_CSV_QUERY));
-			
-			
-			 CSVRow csvRow = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows();
-				
+			String query = "SELECT   ID," + "             PrimaryContact.Contact.ID,"
+					+ "             PrimaryContact.Contact.Name," + "             StatusWithType.StatusType.Name,"
+					+ "             StatusWithType.StatusType.ID" + "     FROM Incident LIMIT 1000";
+			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(query, 10000, ",", false, false,
+					clientInfoHeader(RUNNING_A_CSV_QUERY));
 
-			 for (int i = 0; i < csvRow.getRow().length; i++)
+			CSVRow csvRow = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows();
+
+			for (int i = 0; i < csvRow.getRow().length; i++)
 			{
-					String[] arrayStrings = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows()
-							.getRow()[i].split(",");
-					
-				    String ID = arrayStrings[0];
-					String contacID = arrayStrings[1];
-					String contactName = arrayStrings[2];
-					String incidentStatus_name = arrayStrings[3];
-					String incidentStatus_id = arrayStrings[4];
-					
-					System.out.println("Incident_id :: {"+ ID +"} Contact_id :: {"+ contacID +"} contactName :: {"+contactName+"} incidentStatus_id :: {"+incidentStatus_id+"} incidentStatus_name :: {"+incidentStatus_name+"}");
+				String[] arrayStrings = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows()
+						.getRow()[i].split(",");
+
+				String ID = arrayStrings[0];
+				String contacID = arrayStrings[1];
+				String contactName = arrayStrings[2];
+				String incidentStatus_name = arrayStrings[3];
+				String incidentStatus_id = arrayStrings[4];
+
+				System.out.println("Incident_id :: {" + ID + "} Contact_id :: {" + contacID + "} contactName :: {"
+						+ contactName + "} incidentStatus_id :: {" + incidentStatus_id + "} incidentStatus_name :: {"
+						+ incidentStatus_name + "}");
 
 			}
 		} catch (RemoteException e)
@@ -247,7 +234,81 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+	@Override
+	public void getInc_performance()
+	{
+		try
+		{
+
+			String sql = "SELECT " + "          AssignedTo.StaffGroup.ID," + "        "
+					+ "   FROM Incident LIMIT 10000";
+
+			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql, 10000, ",", false, false,
+					clientInfoHeader(RUNNING_A_CSV_QUERY));
+
+			CSVRow csvRow = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows();
+
+			for (int i = 0; i < csvRow.getRow().length; i++)
+			{
+				String[] arrayStrings = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows()
+						.getRow()[i].split(",");
+
+				System.out.println("Incident_AssignedTo_StaffGroup.ID :: {" + arrayStrings[0] + "}");
+				System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+
+			}
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void getIncidentsField()
+	{
+
+	}
+
+	@Override
+	public void getInc_bounced_msgs()
+	{
+		try
+		{
+
+			String sql2 = "    SELECT                                                     "
+					+ "             I.PrimaryContact.Contact.ID,                       " + "             I.Mailbox.ID,"
+					+ "             I.CreatedTime                                      "
+					+ "        FROM Contact C INNER JOIN C.PrimaryContactIncidents I  LIMIT 10";
+
+			String sql3 = "SELECT count(*) FROM Incident";
+
+			String sql = "SELECT " + "       Incident.LookupName " + "   FROM Incident LIMIT 12 OFFSET 2";
+
+			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql, 10000, ",", false, false,
+					clientInfoHeader(RUNNING_A_CSV_QUERY));
+
+			CSVRow csvRow = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows();
+
+			for (int i = 0; i < csvRow.getRow().length; i++)
+			{
+				String[] arrayStrings = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows()
+						.getRow()[i].split(",");
+
+				System.out.println("Incident_PrimaryContact.Contact.ID :: {" + arrayStrings[0] + "}");
+				// System.out.println("Incident_Mailbox.ID :: {" +
+				// arrayStrings[1] + "}");
+				// System.out.println("Incident_CreatedTime :: {" +
+				// arrayStrings[2] + "}");
+				System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
 
 }

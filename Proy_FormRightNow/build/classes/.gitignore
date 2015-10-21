@@ -1,7 +1,8 @@
 /client/
 /com/
+/dao/
 /model/
 /rn/
 /servlet/
 /test/
-/dao/
+/util/
