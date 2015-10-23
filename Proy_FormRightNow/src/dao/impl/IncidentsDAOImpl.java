@@ -277,15 +277,14 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 		try
 		{
 
-			String sql = "    SELECT                                                    "
-					+ "               I.PrimaryContact.Contact.ID,                       "
-					+ "               I.Mailbox.Name,                                      "
-					+ "               I.CreatedTime,                                        "
+			String sql = "    SELECT                                                         "
+					+ "               I.PrimaryContact.Contact.ID,                           "
+					+ "               I.Mailbox.Name,                                        "
+					+ "               I.CreatedTime,                                         "
 					+ "               I.Threads.ThreadList.ID                                "
 					+ "        FROM Contact C INNER JOIN C.PrimaryContactIncidents I  LIMIT 1000";
 
-			// String sql = "SELECT " + " Incident.LookupName " + " FROM
-			// Incident LIMIT 12 OFFSET 2";
+		
 
 			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql, 10000, ",", false, false,
 					clientInfoHeader(RUNNING_A_CSV_QUERY));
@@ -300,7 +299,6 @@ public class IncidentsDAOImpl extends RightNowClient implements IncidentsDAO
 				System.out.println("Incident_PrimaryContact.Contact.ID :: {" + arrayStrings[0] + "}");
 				System.out.println("Incident_Mailbox.ID :: {" + arrayStrings[1] + "}");
 				System.out.println("Incident_CreatedTime :: {" + arrayStrings[2] + "}");
-				
 				if (arrayStrings.length == 3)
 				{
 					System.out.println("Incident_Threads     :: { }");

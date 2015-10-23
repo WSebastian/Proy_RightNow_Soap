@@ -1,5 +1,7 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -9,6 +11,9 @@ public class TestQueryCount<T>
 	{
 
 		new TestQueryCount<>().getAllRow();
+		
+
+		
 	}
 
 	public void getAllRow()
@@ -19,12 +24,12 @@ public class TestQueryCount<T>
 		
 		System.out.println("::::::: Tamaño de la lista :::::::: "+incidents.size());
 		
-//		for (int i = 0; i < incidents.size(); i++)
-//		{
-//			
-//			System.out.println(":::::::: "+incidents.get(i));
-//
-//		}
+		for (int i = 0; i < incidents.size(); i++)
+		{
+			
+			System.out.println(":::::::: "+incidents.get(i));
+
+		}
 
 	}
 

@@ -19,8 +19,13 @@ public class GenericClass extends RightNowClient
 		System.out.println("Salio::::::::: tamaño de paquetes: " + csvRows.size());
 
 		System.out.println("Antes de llenar");
+		
+		int c=0;
 		for (int i = 0; i < csvRows.size(); i++)
 		{
+			
+			
+			
 			CSVRow csvRow = csvRows.get(i);
 			for (int j = 0; j < csvRow.getRow().length; j++)
 			{
@@ -28,7 +33,6 @@ public class GenericClass extends RightNowClient
 				listString.add(fila);
 			}
 		}
-		System.out.println("Salio!!!!!!!!!!!!!!!!!!");
 		return listString;
 	}
 
@@ -65,22 +69,29 @@ public class GenericClass extends RightNowClient
 
 				do
 				{
-					count++;
+					
 
-					if (count == 1)
+					if (count == 0)
 					{
-						sqlGenerate = sql + " LIMIT 10000 ";
+						sqlGenerate = sql + " LIMIT 10000 OFFSET 1";
 					} else
 					{
 						sqlGenerate = sql + " LIMIT 10000 OFFSET " + (count * 10000);
 
 					}
 					System.out.println("Query Generado: " + sqlGenerate);
+
+					
 					csvRow = getResultQueryCSVRow(sqlGenerate);
+					
+					
+				
 
 					csvRows.add(csvRow);
+					
+					count++;
 
-				} while (!(count == divisor));
+				} while (count < divisor+1);
 
 
 
