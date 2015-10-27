@@ -3,6 +3,8 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.rightnow.ws.messages.CSVRow;
 import com.rightnow.ws.messages.QueryCSVResponseMsg;
@@ -11,13 +13,16 @@ import client.RightNowClient;
 
 public class GenericClass extends RightNowClient
 {
+	
+	private static final Logger logger = LogManager.getLogger(GenericClass.class);
 
 	public List<String> getListString(String sql)
 	{
 		List<String> listString = new ArrayList<String>();
 		List<CSVRow> csvRows = getAllRows(sql);
+		logger.trace("Salio::::::::: tamaño de paquetes: " + csvRows.size());
 		System.out.println("Salio::::::::: tamaño de paquetes: " + csvRows.size());
-
+		logger.trace("Antes de llenar");
 		System.out.println("Antes de llenar");
 		
 		int c=0;
@@ -42,7 +47,7 @@ public class GenericClass extends RightNowClient
 		try
 		{
 			Integer rowCounts = getRowCounts(sql.split("FROM")[1]);
-
+			logger.trace("Tamaño de registros contados devuelto: " + rowCounts);
 			System.out.println("Tamaño de registros contados devuelto: " + rowCounts);
 
 			CSVRow csvRow;
@@ -57,6 +62,9 @@ public class GenericClass extends RightNowClient
 				Integer residuo = Integer.parseInt(resultado[2].trim());
 				Integer count = 0;
 
+				logger.trace("Divisor: " + divisor);
+				logger.trace("cociente: " + cociente);
+				logger.trace("residuo: " + residuo);
 				System.out.println("Divisor: " + divisor);
 				System.out.println("cociente: " + cociente);
 				System.out.println("residuo: " + residuo);
@@ -79,6 +87,7 @@ public class GenericClass extends RightNowClient
 						sqlGenerate = sql + " LIMIT 10000 OFFSET " + (count * 10000);
 
 					}
+					logger.trace("Query Generado: " + sqlGenerate);
 					System.out.println("Query Generado: " + sqlGenerate);
 
 					

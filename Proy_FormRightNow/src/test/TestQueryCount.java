@@ -24,12 +24,12 @@ public class TestQueryCount<T>
 		
 		System.out.println("::::::: Tamaño de la lista :::::::: "+incidents.size());
 		
-		for (int i = 0; i < incidents.size(); i++)
-		{
-			
-			System.out.println(":::::::: "+incidents.get(i));
-
-		}
+//		for (int i = 0; i < incidents.size(); i++)
+//		{
+//			
+//			System.out.println(":::::::: "+incidents.get(i));
+//
+//		}
 
 	}
 
