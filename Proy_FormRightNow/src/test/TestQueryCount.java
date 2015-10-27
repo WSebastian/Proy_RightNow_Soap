@@ -21,13 +21,13 @@ public class TestQueryCount<T>
 
 	public void getAllRow()
 	{
-		String sql = "SELECT * FROM Opportunity";
+		String sql = "SELECT * FROM Contact";
 
 		List<String> incidents = new GenericClass().getListString(sql);
 		
 		System.out.println("::::::: Tamaño de la lista :::::::: "+incidents.size());
 		
-		String outputFile = "test/export.csv";
+		String outputFile = "D:/test/export.csv";
 		boolean alreadyExists = new File(outputFile).exists();
 		
 		if(alreadyExists){
@@ -38,10 +38,7 @@ public class TestQueryCount<T>
 		try{
 			CsvWriter csvOutput = new CsvWriter(new FileWriter(outputFile, true), ',');
             
-            csvOutput.write("Codigo");
-            csvOutput.write("Nombres");
-            csvOutput.write("Apellidos");
-            csvOutput.write("Correo");
+            csvOutput.write("Incident");
             csvOutput.endRecord();
             
             for (int i = 0; i < incidents.size(); i++)
@@ -50,6 +47,8 @@ public class TestQueryCount<T>
     			csvOutput.write(incidents.get(i));
     			csvOutput.endRecord();
     		}
+            
+            csvOutput.close();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
