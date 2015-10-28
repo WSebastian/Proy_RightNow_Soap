@@ -38,7 +38,7 @@ public class TestQueryCount<T>
 		try{
 			CsvWriter csvOutput = new CsvWriter(new FileWriter(outputFile, true), ',');
             
-            csvOutput.write("Incident");
+            csvOutput.write("Contact");
             csvOutput.endRecord();
             
             for (int i = 0; i < incidents.size(); i++)

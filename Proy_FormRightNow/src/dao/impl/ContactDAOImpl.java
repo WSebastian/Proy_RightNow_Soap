@@ -245,5 +245,36 @@ public class ContactDAOImpl extends RightNowClient implements ContactDAO
 		return contact;
 	}
 
+	@Override
+	public void getAll()
+	{
+		try
+		{
+			String sql2 = " Select                                               "
+						+ "        ID,                                          "
+						+ "        LookupName                                   " 
+						+ " From                                             "
+						+ "    Contact   where ID = 6673566   ";
+
+			QueryCSVResponseMsg queryCSVResponseMsg = _service.queryCSV(sql2, 10000, ",", false, false,
+					clientInfoHeader(RUNNING_A_CSV_QUERY));
+			CSVRow csvRow = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows();
+
+			for (int i = 0; i < csvRow.getRow().length; i++)
+			{
+				String[] arrayStrings = queryCSVResponseMsg.getCSVTableSet().getCSVTables().getCSVTable()[0].getRows()
+						.getRow()[i].split(",");
+
+				System.out.println("Contact_id :: {" + arrayStrings[0] + "}");
+				System.out.println("Contact.LookupName :: {" + arrayStrings[1] + "}");
+			}
+
+		} 
+		catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+	}
+
 
 }

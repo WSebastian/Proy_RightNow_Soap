@@ -1,10 +1,10 @@
 package test;
 
 
-import com.rightnow.ws.objects.Mailbox;
 
 import dao.AnswerDAO;
 import dao.ChannelTypeDAO;
+import dao.ContactDAO;
 import dao.DispositionDAO;
 import dao.FileAttachmentDAO;
 import dao.IncidentsDAO;
@@ -15,6 +15,7 @@ import dao.ServiceCategoriesDAO;
 import dao.ServiceProductDAO;
 import dao.impl.AnswerDAOImpl;
 import dao.impl.ChannelTypeDAOImpl;
+import dao.impl.ContactDAOImpl;
 import dao.impl.DispositionDAOImpl;
 import dao.impl.FileAttachmentDAOImpl;
 import dao.impl.IServiceRightNow;
@@ -34,6 +35,8 @@ public class TestGetTabla
 	static IncidentsDAO incidentsDAO = new IncidentsDAOImpl();
 
 	static AnswerDAO answerDAO = new AnswerDAOImpl();
+	
+	static ContactDAO contactDAO = new ContactDAOImpl();
 
 	static DispositionDAO dispositionDAO = new DispositionDAOImpl();
 
@@ -55,7 +58,7 @@ public class TestGetTabla
 	public static void main(String[] args)
 	{
 		
-		mailBoxDAO.getMailBox();
+		contactDAO.getAll();
 		
 
 		

@@ -34,7 +34,7 @@ public class GenericClass extends RightNowClient
 			CSVRow csvRow = csvRows.get(i);
 			for (int j = 0; j < csvRow.getRow().length; j++)
 			{
-				String fila = csvRow.getRow()[i];
+				String fila = csvRow.getRow()[j];
 				listString.add(fila);
 			}
 		}
@@ -82,7 +82,8 @@ public class GenericClass extends RightNowClient
 					if (count == 0)
 					{
 						sqlGenerate = sql + " LIMIT 10000 OFFSET 1";
-					} else
+					} 
+					else
 					{
 						sqlGenerate = sql + " LIMIT 10000 OFFSET " + (count * 10000);
 

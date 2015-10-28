@@ -13,4 +13,6 @@ public interface ContactDAO
 			Integer _tipoDocumento, String _numeroDocumento, String _email);
 
 	Contact getContactByEmail(String email);
+	
+	void getAll();
 }
