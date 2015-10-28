@@ -43,7 +43,7 @@ public class TestQueryCount<T>
             
             for (int i = 0; i < incidents.size(); i++)
     		{
-    			System.out.println(":::::::: "+incidents.get(i));
+    			//System.out.println(":::::::: "+incidents.get(i));
     			csvOutput.write(incidents.get(i));
     			csvOutput.endRecord();
     		}
